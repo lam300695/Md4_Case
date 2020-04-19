@@ -38,4 +38,5 @@ public class TypeController {
         model.addAttribute("message", "Create Success!!!");
         return "/type/create";
     }
+
 }

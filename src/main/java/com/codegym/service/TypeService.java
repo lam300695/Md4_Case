@@ -11,4 +11,7 @@ public interface TypeService {
     public Type findById(Long id);
     public void save(Type type);
     public void remove(Long id);
+
+//    Page<Type> findAllByTypename(String typeName, Pageable pageable);
+
 }

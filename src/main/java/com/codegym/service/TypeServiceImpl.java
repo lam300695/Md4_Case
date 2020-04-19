@@ -1,5 +1,6 @@
 package com.codegym.service;
 
+import com.codegym.model.Product;
 import com.codegym.model.Type;
 import com.codegym.repository.TypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,4 +31,10 @@ public class TypeServiceImpl implements TypeService {
     public void remove(Long id) {
         typeRepository.delete(id);
     }
+
+
+//    @Override
+//    public Page<Type> findAllByTypename(String typeName, Pageable pageable) {
+//        return typeRepository.findAllByTypename(typeName, pageable);
+//    }
 }
