@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <title>Product</title>
 <meta charset="utf-8">
@@ -35,7 +37,7 @@
 										<ul>
 											<li><a href="../../../templates/lip/categories.html">Categories</a></li>
 											<li><a href="view.html">Product</a></li>
-											<li><a href="../../../templates/lip/cart.html">Cart</a></li>
+											<li><a href="cart.html">Cart</a></li>
 											<li><a href="../../../templates/lip/checkout.html">Check out</a></li>
 											<li><a href="../../../templates/lip/contact.html">Contact</a></li>
 										</ul>
@@ -56,7 +58,7 @@
 							</nav>
 							<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="../../../templates/lip/cart.html">
+									<a href="cart.html">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
 											 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 											 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;"
@@ -148,7 +150,7 @@
 						<ul class="page_menu_selection menu_mm">
 							<li class="page_menu_item menu_mm"><a href="../../../templates/lip/categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="view.html">Product<i class="fa fa-angle-down"></i></a></li>
-							<li class="page_menu_item menu_mm"><a href="../../../templates/lip/cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
+							<li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="../../../templates/lip/checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
 							<li class="page_menu_item menu_mm"><a href="../../../templates/lip/contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
 						</ul>
@@ -263,8 +265,8 @@
 			<div class="row description_row">
 				<div class="col">
 					<div class="description_title_container">
-						<div class="description_title"><a th:href="@{/product/delete/__${product.id}__ }">Delete Product</a></div>
-						<div class="reviews_title"><a th:href="@{/product/edit/__${product.id}__ }">Edit Product</a></div>
+						<div class="description_title" sec:authorize="isAuthenticated() && hasRole('ADMIN')"><a th:href="@{/product/delete/__${product.id}__ }">Delete Product</a></div>
+						<div class="reviews_title" sec:authorize="isAuthenticated() && hasRole('ADMIN')"><a th:href="@{/product/edit/__${product.id}__ }">Edit Product</a></div>
 					</div>
 					<div class="description_text">
 						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>

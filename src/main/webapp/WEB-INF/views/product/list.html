@@ -38,11 +38,8 @@
                                     <li class="hassubs active">
                                         <a href="list.html">Home</a>
                                         <ul>
-                                            <li><a href="../../../templates/lip/categories.html">Categories</a></li>
-                                            <li><a href="view.html">Product</a></li>
-                                            <li><a href="../../../templates/lip/cart.html">Cart</a></li>
-                                            <li><a href="../../../templates/lip/checkout.html">Check out</a></li>
-                                            <li><a href="../../../templates/lip/contact.html">Contact</a></li>
+                                            <li><a href="/sortByPriceAsc">Product Price Low To Hight</a></li>
+                                            <li><a href="/sortByPriceDesc">Product Price Hight To Low</a></li>
                                         </ul>
                                     </li>
                                     <li class="hassubs">
@@ -54,14 +51,15 @@
                                             <li><a href="/oppo">Oppo</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Accessories</a></li>
-                                    <li><a href="/admin/product/create">Create Customer</a></li>
+                                    <li><a href="/log">Sign in</a></li>
+                                    <li sec:authorize="isAuthenticated() && hasRole('ADMIN')"><a href="/product/create">Create Customer</a></li>
+                                    <li sec:authorize="isAuthenticated() && hasRole('ADMIN')"><a href="/manageUser">User Manage</a></li>
                                     <li sec:authorize="isAuthenticated()"><a href="/logout">Logout</a></li>
                                 </ul>
                             </nav>
                             <div class="header_extra ml-auto">
                                 <div class="shopping_cart">
-                                    <a href="../../../templates/lip/cart.html">
+                                    <a href="cart.html">
                                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
                                              xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                              viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;"
@@ -156,7 +154,7 @@
                                     class="fa fa-angle-down"></i></a></li>
                             <li class="page_menu_item menu_mm"><a href="view.html">Product<i
                                     class="fa fa-angle-down"></i></a></li>
-                            <li class="page_menu_item menu_mm"><a href="../../../templates/lip/cart.html">Cart<i
+                            <li class="page_menu_item menu_mm"><a href="cart.html">Cart<i
                                     class="fa fa-angle-down"></i></a></li>
                             <li class="page_menu_item menu_mm"><a href="../../../templates/lip/checkout.html">Checkout<i
                                     class="fa fa-angle-down"></i></a></li>

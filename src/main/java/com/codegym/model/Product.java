@@ -1,6 +1,7 @@
 package com.codegym.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -13,6 +14,9 @@ public class Product {
     private String productDicri;
     private String productImage;
     private String productPrice;
+
+//    @OneToMany(mappedBy = "product")
+//    private List<ProductOrderDetail> productOrderDetails;
 
     @ManyToOne
     @JoinColumn(name = "type_id")

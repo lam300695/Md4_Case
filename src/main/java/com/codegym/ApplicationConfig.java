@@ -57,8 +57,10 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addFormatter(new TypeFormatter(applicationContext.getBean(TypeService.class)));
+        registry.addFormatter(new TypeFormatter(applicationContext.getBean(TypeService.class,RoleService.class)));
     }
+
+
 
 
     //Thymeleaf Configuration
@@ -162,6 +164,11 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     @Bean
     public UserService userService(){
         return new UserServiceImpl();
+    }
+
+    @Bean
+    public RoleService roleService(){
+        return new RoleServiceImpl();
     }
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Login V6</title>
 	<meta charset="UTF-8">
@@ -75,7 +75,7 @@
 								Don’t have an account?
 							</span>
 
-							<a href="#" class="txt2">
+							<a th:href="@{/registration}" class="txt2">
 								Sign up
 							</a>
 						</li>

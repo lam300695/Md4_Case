@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Provinces</title>
+</head>
+<body>
+<a href="/product/list">List Product</a>
+<h1>User Manage</h1>
+<table border="1">
+    <tr>
+        <th>User Name</th>
+        <th>Password</th>
+        <th>Role</th>
+    </tr>
+    <th:block th:each="user : ${users}">
+        <tr>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.getRole().role}"></td>
+
+        </tr>
+    </th:block>
+</table>
+</body>
+</html>

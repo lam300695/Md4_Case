@@ -6,6 +6,7 @@ import com.codegym.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -41,6 +42,18 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAllByType_TypeName(String typeName, Pageable pageable) {
         return productRepository.findAllByType_TypeName( typeName, pageable);
     }
+
+    @Override
+    public Page<Product> findAllByOrderByProductPriceAsc(Pageable pageable) {
+        return productRepository.findAllByOrderByProductPriceAsc(pageable);
+    }
+
+    @Override
+    public Page<Product> findAllByOrderByProductPriceDesc(Pageable pageable) {
+        return productRepository.findAllByOrderByProductPriceDesc(pageable);
+    }
+
+
 
 
 }

@@ -7,6 +7,7 @@ import com.codegym.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,33 @@ public class ProductController {
         return "product/list";
     }
 
-    @GetMapping("/admin/product/create")
+    @GetMapping("/admin/product/list")
+    public String showListProductLoginAdmin(Model model, Pageable pageable, @RequestParam("s") Optional<String> s) {
+        Page<Product> products;
+        if (s.isPresent()) {
+            products = productService.findAllByProductNameContaining(s.get(), pageable);
+        } else {
+            products = productService.findAll(pageable);
+        }
+//        Page<Product> products = productService.findAll(pageable);
+        model.addAttribute("products", products);
+        return "product/list";
+    }
+
+    @GetMapping("/user/product/list")
+    public String showListProductLoginUser(Model model, Pageable pageable, @RequestParam("s") Optional<String> s) {
+        Page<Product> products;
+        if (s.isPresent()) {
+            products = productService.findAllByProductNameContaining(s.get(), pageable);
+        } else {
+            products = productService.findAll(pageable);
+        }
+//        Page<Product> products = productService.findAll(pageable);
+        model.addAttribute("products", products);
+        return "product/list";
+    }
+
+    @GetMapping("/product/create")
     public String showFormCreate(Model model) {
         model.addAttribute("product", new Product());
         return "/product/create";
@@ -127,6 +154,20 @@ public class ProductController {
         typeName = "OPPO";
         Page<Product> products= productService.findAllByType_TypeName(typeName,pageable);
         model.addAttribute("products", products);
+        return "product/list";
+    }
+
+    @GetMapping("/sortByPriceAsc")
+    public String SortAsc(Model model,Pageable pageable){
+        Page<Product>products = productService.findAllByOrderByProductPriceAsc(pageable);
+        model.addAttribute("products",products);
+        return "product/list";
+    }
+
+    @GetMapping("/sortByPriceDesc")
+    public String SortDesc(Model model, Pageable pageable){
+        Page<Product>products = productService.findAllByOrderByProductPriceDesc(pageable);
+        model.addAttribute("products",products);
         return "product/list";
     }
 }

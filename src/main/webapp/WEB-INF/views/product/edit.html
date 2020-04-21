@@ -31,9 +31,18 @@
             <td>Product Price:</td>
             <td><input type="text" th:field="*{productPrice}"/></td>
         </tr>
+
+        <tr>
+            <td>Type:</td>
+            <td>
+                <select th:field="*{type}">
+                    <option th:each="p : ${types}" th:value="${p.id}" th:text="${p.typeName}"></option>
+                </select>
+            </td>
+        </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="Update province"></td>
+            <td><input type="submit" value="Update product"></td>
         </tr>
     </table>
 </form>
